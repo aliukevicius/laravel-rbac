@@ -1,6 +1,6 @@
 {
     "name": "aliukevicius/laravel-rbac",
-    "description": "Laravel 5 role biased access",
+    "description": "Laravel 5 role based access",
     "keywords": [
         "aliukevicius",
         "laravel 5",
