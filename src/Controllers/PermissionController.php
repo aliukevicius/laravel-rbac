@@ -1,6 +1,7 @@
 <?php namespace Aliukevicius\LaravelRbac\Controllers; 
 
 use Aliukevicius\LaravelRbac\Services\PermissionService;
+use Aliukevicius\LaravelRbac\Services\RoleService;
 use Aliukevicius\LaravelRbac\Models\Permission;
 
 class PermissionController extends Controller {
@@ -14,11 +15,15 @@ class PermissionController extends Controller {
     /** @var PermissionService */
     protected $permissionService;
 
-    public function __construct(PermissionService $permissionService, Permission $permission)
+    /** @var RoleService */
+    protected $roleService;
+
+    public function __construct(PermissionService $permissionService, Permission $permission, RoleService $roleService)
     {
         $this->roleModel = \App::make(\Config::get('laravel-rbac.roleModel'));
         $this->permissionModel = $permission;
         $this->permissionService = $permissionService;
+        $this->roleService = $roleService;
     }
 
     public function index()
@@ -28,9 +33,9 @@ class PermissionController extends Controller {
 
         $roleCount = count($roles);
 
-        $rolePermissions = $this->permissionService->getRolePermissions();;
+        $rolePermissions = $this->roleService->getRolePermissions();;
 
-        $activePermissions = $this->permissionService->getRolePermissions();
+        $activePermissions = $this->roleService->getRolePermissions();
 
         return view('aliukevicius/laravelRbac::permissions.index', compact(
             'roles',
