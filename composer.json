@@ -1,0 +1,26 @@
+{
+    "name": "aliukevicius/laravel-rbac",
+    "description": "Laravel 5 role biased access",
+    "keywords": [
+        "aliukevicius",
+        "laravel 5",
+        "rbac"
+    ],
+    "homepage": "https://github.com/aliukevicius/laravel-rbac",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Martynas Aliukevičius",
+            "email": "martynas@aliukevicius.com",
+            "homepage": "http://aliukevicius.com"
+        }
+    ],
+    "require": {
+        "php" : ">=5.5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Aliukevicius\\LaravelRbac\\": "src"
+        }
+    }
+}

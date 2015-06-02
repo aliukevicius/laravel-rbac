@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreatePermissionsTable extends Migration {
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('permissions', function(Blueprint $table)
+        {
+            $table->increments('id');
+            $table->string('controller_name');
+            $table->string('controller_action_name');
+            $table->string('route_name')->unique();
+            $table->string('route_action_name')->unique();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('permissions');
+    }
+
+}
