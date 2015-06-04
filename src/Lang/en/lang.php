@@ -13,6 +13,7 @@ return [
     'role.fieldNamePlaceholder'           => 'Enter name',
     'role.fieldDescription'               => 'Role description',
     'role.fieldDescriptionPlaceholder'    => 'Enter description',
+    'role.addRoleBtn'                     => 'Add new role',
     'role.createRoleBtn'                  => 'Create role',
     'role.updateRoleBtn'                  => 'Update role',
     'role.messageCreated'                 => 'Role ":name" created',

@@ -33,6 +33,10 @@
 <div class="panel panel-default">
     <div class="panel-heading">@lang('aliukevicius/laravelRbac::lang.role.indexPageTitle')</div>
     <div class="panel-body">
+        <a href="{{ \URL::action('\\' . \Config::get('laravel-rbac.roleController') . '@create') }}" class="btn btn-success">
+            <i class="glyphicon glyphicon-plus"></i> @lang('aliukevicius/laravelRbac::lang.role.addRoleBtn')
+        </a>
+
         <table class="table table-striped">
             <thead>
             <tr>
