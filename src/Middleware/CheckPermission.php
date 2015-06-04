@@ -2,16 +2,19 @@
 
 use Closure;
 
+use Illuminate\Foundation\Application;
+use Illuminate\Config\Repository as Config;
+
 class CheckPermission {
 
     protected $activeUser;
 
     protected $checkPermissions;
 
-    public function __construct()
+    public function __construct(Application $app, Config $config)
     {
-        $this->activeUser = \App::make('Aliukevicius\LaravelRbac\ActiveUser');
-        $this->checkPermissions = \Config::get('laravel-rbac.routePermissionChecking');
+        $this->activeUser = $app->make('Aliukevicius\LaravelRbac\ActiveUser');
+        $this->checkPermissions = $config->get('laravel-rbac.routePermissionChecking');
     }
 
 
