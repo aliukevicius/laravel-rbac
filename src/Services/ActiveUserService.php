@@ -71,7 +71,7 @@ class ActiveUserService {
     }
 
     /**
-     * Check if user hash role
+     * Check if user hash role using role name
      *
      * @param string $roleName
      * @return bool
@@ -87,6 +87,25 @@ class ActiveUserService {
         $roles = $this->getUserRoles();
 
         return isset($roles[$roleName]);
+    }
+
+    /**
+     * Check if user has role using role ID
+     *
+     * @param int $roleId
+     * @return bool
+     */
+    public function hasRoleById($roleId)
+    {
+        if ($this->isAuthenticated() === false) {
+            return false;
+        } else if ($this->getUser() === null) { // no user no roles
+            return false;
+        }
+
+        $roles = $this->getUserRoles();
+
+        return in_array($roleId, $roles);
     }
 
     /**
