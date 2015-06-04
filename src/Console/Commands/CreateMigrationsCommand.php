@@ -81,7 +81,7 @@ class CreateMigrationsCommand extends  Command {
      */
     protected function getStub($migrationName)
     {
-        $stubsDir =  __DIR__ .'/../../Migrations/Stubs/';
+        $stubsDir =  __DIR__ .'/../../../migrations/Stubs/';
 
         return $this->files->get($stubsDir . $migrationName . '.stub');
     }

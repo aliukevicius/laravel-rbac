@@ -16,7 +16,7 @@ class RbacServiceProvider extends ServiceProvider
     {
         $basePath = __DIR__ . '/';
 
-        $this->mergeConfigFrom($basePath . 'Config/laravel-rbac.php', 'laravel-rbac');
+        $this->mergeConfigFrom($basePath . '../config/laravel-rbac.php', 'laravel-rbac');
         $this->loadViewsFrom($basePath . 'Resources/views', 'aliukevicius/laravelRbac');
 
         $this->loadTranslationsFrom($basePath . 'Resources/lang', 'aliukevicius/laravelRbac');
@@ -24,7 +24,7 @@ class RbacServiceProvider extends ServiceProvider
 
         $this->publishes([
             $basePath . 'Resources/views' => base_path('resources/views/vendor/aliukevicius/laravelRbac'),
-            $basePath . 'Config/laravel-rbac.php' => config_path('laravel-rbac.php'),
+            $basePath . '../config/laravel-rbac.php' => config_path('laravel-rbac.php'),
         ]);
 
         /** @var \Illuminate\Routing\Router $router */
