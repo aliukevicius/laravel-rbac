@@ -205,7 +205,7 @@ class PermissionService {
      */
     public function getUserPermissions($userId)
     {
-        return $this->db->table('user_roles as ur')
+        return $this->db->table('user_role as ur')
             ->select([
                 'p.route_name',
                 'p.route_action_name',

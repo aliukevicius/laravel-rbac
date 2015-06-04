@@ -54,7 +54,7 @@ class RoleService {
         }
 
         if (count($insertRoles) > 0) {
-            $this->db->table('user_roles')->insert($insertRoles);
+            $this->db->table('user_role')->insert($insertRoles);
         }
 
         return $this;
@@ -72,7 +72,7 @@ class RoleService {
         $roleIds = (array) $roleIds;
 
         if (count($roleIds) > 0) {
-            $this->db->table('user_roles')
+            $this->db->table('user_role')
                 ->where('user_id', '=', $userId)
                 ->whereIn('role_id', $roleIds)
                 ->delete();
@@ -107,7 +107,7 @@ class RoleService {
      */
     public function getUserRoles($userId)
     {
-        return $this->db->table('user_roles as ur')
+        return $this->db->table('user_role as ur')
             ->select([
                 'r.id',
                 'r.name',
