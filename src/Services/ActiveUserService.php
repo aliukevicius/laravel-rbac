@@ -161,25 +161,12 @@ class ActiveUserService {
     protected function getProtectedRoutes()
     {
         if ($this->protectedRoutes === null) {
-            $routes = $this->router->getRoutes();
+            $this->protectedRoutes = [];
 
-            foreach ($routes as $r) {
-                // permissions are applied only on routes which have "checkPermission" middleware
-                if (in_array('checkPermission', $r->middleware()) === false) {
-                    continue;
-                }
+            $routeList = $this->permissionService->getProtectedRouteList();
 
-                if ($r->getActionName() == 'Closure') { // permissions and closures doesn't work together
-                    continue;
-                }
-
-                $rName = $r->getName();
-
-                $this->protectedRoutes[$rName] = $r->getActionName();
-            }
-
-            if ($this->protectedRoutes === null) {
-                return [];
+            if (count($routeList) > 0) {
+                $this->protectedRoutes = array_column($routeList, 'route_action_name', 'route_name');
             }
         }
 
