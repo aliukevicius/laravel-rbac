@@ -1,10 +1,13 @@
 {
     "name": "aliukevicius/laravel-rbac",
-    "description": "Laravel 5 role based access",
+    "description": "Laravel 5 role based access control",
     "keywords": [
         "aliukevicius",
-        "laravel 5",
-        "rbac"
+        "laravel",
+        "rbac",
+        "roles",
+        "permissions",
+        "security"
     ],
     "homepage": "https://github.com/aliukevicius/laravel-rbac",
     "license": "MIT",
@@ -16,11 +19,13 @@
         }
     ],
     "require": {
-        "php" : ">=5.5.0"
+        "php" : ">=5.5.0",
+        "laravel/framework": "5.0.*"
     },
     "autoload": {
         "psr-4": {
             "Aliukevicius\\LaravelRbac\\": "src"
         }
-    }
+    },
+    "minimum-stability": "stable"
 }
