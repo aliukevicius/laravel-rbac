@@ -18,6 +18,9 @@ class PermissionService {
     /** @var Router */
     protected $router;
 
+    /** @var array Route list protected by checkPermission middleware  */
+    protected $protectedRouteList;
+
 
     public function __construct(DatabaseManager $db, Permission $permission, Router $router)
     {
@@ -55,40 +58,12 @@ class PermissionService {
      */
     public function updatePermissionList()
     {
-        $routeList = $this->router->getRoutes();
-
-        $permissionList = [];
-
-        /** @var \Illuminate\Routing\Route $route */
-        foreach ($routeList as $route) {
-
-            // we need only routes which has permission checking middleware
-            if (in_array('checkPermission', $route->middleware()) === false) {
-                continue;
-            }
-
-            if ($route->getActionName() == 'Closure') { // permissions and closures doesn't work together
-                continue;
-            }
-
-            $routeName = $route->getName();
-
-            if (empty($routeName)) { // route name should not be empty
-                continue;
-            }
-
-            $permissionList[$routeName] = [
-                'route_action_name' => $route->getActionName(),
-                'route_name' => $routeName,
-                'controller_name' => $this->extractControllerName($route->getActionName()),
-                'controller_action_name' => $this->extractControllerActionName($route->getActionName()),
-            ];
-        }
+        $protectedRouteList = $this->getProtectedRouteList();
 
         $permissionListInDb = $this->permissionModel->all()->toArray();
 
-        $insertPermissions = array_udiff($permissionList, $permissionListInDb, [$this, 'comparePermissions']);
-        $deletePermissions = array_udiff($permissionListInDb, $permissionList, [$this, 'comparePermissions']);
+        $insertPermissions = array_udiff($protectedRouteList, $permissionListInDb, [$this, 'comparePermissions']);
+        $deletePermissions = array_udiff($permissionListInDb, $protectedRouteList, [$this, 'comparePermissions']);
 
         if (count($deletePermissions) > 0) {
             // remove role_permission connections
@@ -100,6 +75,48 @@ class PermissionService {
         if (count($insertPermissions) > 0) {
             $this->db->table('permissions')->insert($insertPermissions);
         }
+    }
+
+    /**
+     * Get route list protected by checkPermission middleware
+     *
+     * @return array
+     */
+    public function getProtectedRouteList()
+    {
+        if (is_null($this->protectedRouteList)) {
+            $this->protectedRouteList = [];
+
+            $routeList = $this->router->getRoutes();
+
+            /** @var \Illuminate\Routing\Route $route */
+            foreach ($routeList as $route) {
+
+                // we need only routes which has permission checking middleware
+                if (in_array('checkPermission', $route->middleware()) === false) {
+                    continue;
+                }
+
+                if ($route->getActionName() == 'Closure') { // permissions and closures doesn't work together
+                    continue;
+                }
+
+                $routeName = $route->getName();
+
+                if (empty($routeName)) { // route name should not be empty
+                    continue;
+                }
+
+                $this->protectedRouteList[$routeName] = [
+                    'route_action_name' => $route->getActionName(),
+                    'route_name' => $routeName,
+                    'controller_name' => $this->extractControllerName($route->getActionName()),
+                    'controller_action_name' => $this->extractControllerActionName($route->getActionName()),
+                ];
+            }
+        }
+
+        return $this->protectedRouteList;
     }
 
     /**
