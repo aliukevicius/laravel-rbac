@@ -92,7 +92,7 @@ class ActiveUserService {
     /**
      * Returns true if user has permission and false if user doesn't have permission
      *
-     * @param $routeName
+     * @param string $routeName eg: roles.index
      * @return bool
      */
     public function checkPermissionByRouteName($routeName)
@@ -118,7 +118,7 @@ class ActiveUserService {
     /**
      * Returns true if user has permission and false if user doesn't have permission
      *
-     * @param $routeActionName
+     * @param string $routeActionName eg: Aliukevicius\LaravelRbac\Controllers\RoleController@index
      * @return bool
      */
     public function checkPermissionByRouteActionName($routeActionName)
