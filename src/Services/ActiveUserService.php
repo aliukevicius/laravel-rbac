@@ -233,7 +233,7 @@ class ActiveUserService {
             $this->userRoles = [];
 
             // get roles for logged in user
-            $roleList = $this->roleService->getUserRoles($this->user->user_id);
+            $roleList = $this->roleService->getUserRoles($this->user->id);
 
             foreach ($roleList as $r) {
                 $this->userRoles[$r->name] = $r->id;
@@ -258,7 +258,7 @@ class ActiveUserService {
 
         if ($this->userPermissions === null) {
             // get user permissions
-            $permissions = $this->permissionService->getUserPermissions($this->user->user_id);
+            $permissions = $this->permissionService->getUserPermissions($this->user->id);
 
             foreach ($permissions as $p) {
                 $this->userPermissions['route_names'][] = $p->route_name;
