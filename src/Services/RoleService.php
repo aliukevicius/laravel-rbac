@@ -42,7 +42,7 @@ class RoleService {
         $savedRoles =  [];
 
         foreach ($userRoles as $r) {
-            $savedRoles[] = $r->role_id;
+            $savedRoles[] = $r->id;
         }
 
         // remove roles which user already has
@@ -58,6 +58,25 @@ class RoleService {
         }
 
         return $this;
+    }
+
+    /**
+     * Attach roles to user
+     *
+     * @param int    $userId
+     * @param string|array $roleName
+     * @return $this
+     */
+    public function attachRoleByName($userId, $roleName)
+    {
+        $rolesFromDb = $this->getRolesByNames($roleName);
+
+        $roleIds = [];
+        foreach ($rolesFromDb as $r) {
+            $roleIds[] = $r->id;
+        }
+
+        return $this->attachRole($userId, $roleIds);
     }
 
     /**
