@@ -226,7 +226,7 @@ class PermissionService {
             ->select([
                 'p.route_name',
                 'p.route_action_name',
-                'p.permission_id'
+                'p.id'
             ])
             ->join('role_permission as rp', 'rp.role_id', '=', 'ur.role_id')
             ->join('permissions as p', 'p.id', '=', 'rp.permission_id')
