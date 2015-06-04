@@ -31,7 +31,7 @@ class RbacServiceProvider extends ServiceProvider
         $router = $this->app->make('Illuminate\Routing\Router');
 
         // Register global checkPermission middleware
-        $router->middleware('checkPermission', \Config::get('laravel-rbac.checkPermissionMiddleware'));
+        $router->middleware('checkPermission', $this->app['config']->get('laravel-rbac.checkPermissionMiddleware'));
 
         // get package routes
         require_once $basePath . 'routes.php';
@@ -56,7 +56,7 @@ class RbacServiceProvider extends ServiceProvider
 
         $this->app->singleton('Aliukevicius\LaravelRbac\ActiveUser', function($app){
 
-            return $app->make(\Config::get('laravel-rbac.activeUserService'));
+            return $app->make($this->app['config']->get('laravel-rbac.activeUserService'));
         });
 
         $this->app['facade.laravel-rbac.active-user'] = $this->app->share(function($app)
