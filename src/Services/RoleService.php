@@ -117,5 +117,16 @@ class RoleService {
             ->get();
     }
 
+    /**
+     * Get roles by names
+     *
+     * @param string|array $names
+     */
+    public function getRolesByNames($names)
+    {
+        $names = (array) $names;
+        return $this->roleModel->whereIn('name', $names)->get();
+    }
+
 
 }
