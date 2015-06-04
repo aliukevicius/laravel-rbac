@@ -82,11 +82,11 @@ class RoleService {
     /**
      * Remove roles from user
      *
-     * @param int|array $roleIds
      * @param int       $userId
+     * @param int|array $roleIds
      * @return $this
      */
-    public function detachRole($roleIds, $userId)
+    public function detachRole($userId, $roleIds)
     {
         $roleIds = (array) $roleIds;
 
@@ -98,6 +98,25 @@ class RoleService {
         }
 
         return $this;
+    }
+
+    /**
+     * Remove roles from user
+     *
+     * @param int           $userId
+     * @param string|array  $roleName
+     * @return $this
+     */
+    public function detachRoleByName($userId, $roleName)
+    {
+        $rolesFromDb = $this->getRolesByNames($roleName);
+
+        $roleIds = [];
+        foreach ($rolesFromDb as $r) {
+            $roleIds[] = $r->id;
+        }
+
+        return $this->detachRole($userId, $roleIds);
     }
 
     /**
