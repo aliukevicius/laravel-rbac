@@ -19,7 +19,7 @@ class RbacServiceProvider extends ServiceProvider
         $this->mergeConfigFrom($basePath . 'Config/laravel-rbac.php', 'laravel-rbac');
         $this->loadViewsFrom($basePath . 'Resources/views', 'aliukevicius/laravelRbac');
 
-        $this->loadTranslationsFrom($basePath . 'Lang', 'aliukevicius/laravelRbac');
+        $this->loadTranslationsFrom($basePath . 'Resources/lang', 'aliukevicius/laravelRbac');
 
 
         $this->publishes([
