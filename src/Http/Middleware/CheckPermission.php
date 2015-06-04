@@ -27,7 +27,7 @@ class CheckPermission {
      */
     public function handle($request, Closure $next)
     {
-        if ($this->activeUser->canAccessRoute($request->route()->getName()) === false && $this->checkPermissions) {
+        if ($this->activeUser->checkPermissionByRouteActionName($request->route()->getActionName()) === false && $this->checkPermissions) {
             return response('Unauthorized.', 401);
         }
 
