@@ -34,7 +34,7 @@ class RbacServiceProvider extends ServiceProvider
         $router->middleware('checkPermission', $this->app['config']->get('laravel-rbac.checkPermissionMiddleware'));
 
         // get package routes
-        require_once $basePath . 'routes.php';
+        require_once $basePath . 'Http/routes.php';
     }
 
     /**
