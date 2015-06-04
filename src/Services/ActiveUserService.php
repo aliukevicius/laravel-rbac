@@ -141,18 +141,6 @@ class ActiveUserService {
         return true;
     }
 
-
-    /**
-     * Check if user has permission to access route
-     *
-     * @param string $routeActionName
-     * @return bool
-     */
-    public function canAccessRoute($routeActionName)
-    {
-        return $this->checkPermissionByRouteName($routeActionName);
-    }
-
     /**
      * Get routes protected by permissions
      *
