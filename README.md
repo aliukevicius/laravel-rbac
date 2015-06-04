@@ -1,34 +1,12 @@
-## Install
+# Role based access control for Laravel 5.
 
-Via Composer
-``` 
-composer require aliukevicius/laravel-rbac
-```
+[![Laravel](https://img.shields.io/badge/Laravel-~5.0-orange.svg?style=flat-square)](http://laravel.com)
+[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://tldrlegal.com/license/mit-license)
+[![Total Downloads](http://img.shields.io/packagist/dt/aliukevicius/laravel-rbac.svg?style=flat-square)](https://packagist.org/packages/aliukevicius/laravel-rbac)
 
-Add Service Provider to `config/app.php` in `providers` section
-```php
-'Aliukevicius\LaravelRbac\RbacServiceProvider',
-```
+## Documentation
 
-Add Service Provider to `config/app.php` in `aliases` section
-```php
-'ActiveUser' => 'Aliukevicius\LaravelRbac\Facades\ActiveUser',
-```
-
-Run 
-``` 
-php artisan vendor:publish
-php artisan laravel-rbac:create-migrations
-php artisan migrate
-``` 
-
-Add `checkPermission` middleware for the routes on which permissions checking should be enabled.
-
-```php
-Route::group(['middleware' => 'checkPermission'], function(){
-...
-});
-```
+Check out [Wiki](/aliukevicius/laravel-rbac/wiki) 
 
 
 
