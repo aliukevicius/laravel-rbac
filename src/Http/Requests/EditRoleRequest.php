@@ -11,8 +11,10 @@ class EditRoleRequest extends Request {
      */
     public function rules()
     {
+        $roleId = $this->route('roles');
+
         return [
-            'name' => 'required'
+            'name' => 'required|unique:roles,name,' . $roleId
         ];
     }
 
