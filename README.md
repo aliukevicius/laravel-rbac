@@ -6,7 +6,7 @@
 
 ## Documentation
 
-Check out [Wiki](/wiki) 
+Check out [Wiki](https://github.com/aliukevicius/laravel-rbac/wiki) 
 
 
 
