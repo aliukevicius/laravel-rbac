@@ -1,4 +1,4 @@
-<?php namespace Aliukevicius\LaravelRbac\Controllers;
+<?php namespace Aliukevicius\LaravelRbac\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
 

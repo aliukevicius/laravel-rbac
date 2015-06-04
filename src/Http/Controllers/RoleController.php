@@ -1,7 +1,7 @@
-<?php namespace Aliukevicius\LaravelRbac\Controllers;
+<?php namespace Aliukevicius\LaravelRbac\Http\Controllers;
 
-use Aliukevicius\LaravelRbac\Requests\CreateRoleRequest;
-use Aliukevicius\LaravelRbac\Requests\EditRoleRequest;
+use Aliukevicius\LaravelRbac\Http\Requests\CreateRoleRequest;
+use Aliukevicius\LaravelRbac\Http\Requests\EditRoleRequest;
 
 
 class RoleController extends Controller {

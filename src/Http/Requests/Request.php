@@ -1,4 +1,4 @@
-<?php namespace Aliukevicius\LaravelRbac\Requests;
+<?php namespace Aliukevicius\LaravelRbac\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

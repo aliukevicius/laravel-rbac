@@ -1,4 +1,4 @@
-<?php namespace Aliukevicius\LaravelRbac\Controllers; 
+<?php namespace Aliukevicius\LaravelRbac\Http\Controllers;
 
 use Aliukevicius\LaravelRbac\Services\PermissionService;
 use Aliukevicius\LaravelRbac\Services\RoleService;

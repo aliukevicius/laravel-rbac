@@ -1,4 +1,4 @@
-<?php namespace Aliukevicius\LaravelRbac\Middleware;
+<?php namespace Aliukevicius\LaravelRbac\Http\Middleware;
 
 use Closure;
 

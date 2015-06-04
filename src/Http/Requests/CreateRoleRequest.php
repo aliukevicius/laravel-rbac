@@ -1,6 +1,6 @@
-<?php namespace Aliukevicius\LaravelRbac\Requests; 
+<?php namespace Aliukevicius\LaravelRbac\Http\Requests;
 
-class EditRoleRequest extends Request {
+class CreateRoleRequest extends Request {
 
     protected $translationFile = 'aliukevicius/laravelRbac::lang.role';
 
