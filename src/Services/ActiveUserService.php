@@ -131,7 +131,7 @@ class ActiveUserService {
             return false;
         }
 
-        return true;
+        return false;
     }
 
     /**
@@ -157,7 +157,7 @@ class ActiveUserService {
             return false;
         }
 
-        return true;
+        return false;
     }
 
     /**
