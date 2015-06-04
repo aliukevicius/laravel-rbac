@@ -6,7 +6,7 @@ return [
 
     'rolesPerPage'              => 10, // how many roles to display in one page
 
-    'routePermissionChecking'   => false, // change to false if route permission checking should be turned off
+    'routePermissionChecking'   => true, // change to false if route permission checking should be turned off
 
     'roleController'            => 'Aliukevicius\LaravelRbac\Http\Controllers\RoleController',
     'roleModel'                 => 'Aliukevicius\LaravelRbac\Models\Role',
