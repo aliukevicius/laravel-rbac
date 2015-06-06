@@ -122,7 +122,7 @@ class ActiveUserService {
             return false;
         }
 
-        return false;
+        return true; // if route isn't in protected route list then user should have access to it
     }
 
     /**
@@ -148,7 +148,7 @@ class ActiveUserService {
             return false;
         }
 
-        return false;
+        return true; // if route isn't in protected route list then user should have access to it
     }
 
     /**
