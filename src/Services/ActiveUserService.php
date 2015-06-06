@@ -2,7 +2,6 @@
 
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Application;
-use Illuminate\Routing\Router;
 
 class ActiveUserService {
 
@@ -14,8 +13,6 @@ class ActiveUserService {
 
     /** @var Guard */
     protected $guard;
-
-    protected $router;
 
     /** @var \Illuminate\Foundation\Application  */
     protected $app;
@@ -36,13 +33,11 @@ class ActiveUserService {
         Guard $guard,
         PermissionService $permissionService,
         RoleService $roleService,
-        Application $app,
-        Router $router
+        Application $app
     )
     {
         $this->guard = $guard;
         $this->app = $app;
-        $this->router = $router;
         $this->permissionService = $permissionService;
         $this->roleService = $roleService;
 
