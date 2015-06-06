@@ -75,8 +75,6 @@ class ActiveUserService {
     {
         if ($this->isAuthenticated() === false) {
             return false;
-        } else if ($this->getUser() === null) { // no user no roles
-            return false;
         }
 
         $roles = $this->getUserRoles();
@@ -93,8 +91,6 @@ class ActiveUserService {
     public function hasRoleById($roleId)
     {
         if ($this->isAuthenticated() === false) {
-            return false;
-        } else if ($this->getUser() === null) { // no user no roles
             return false;
         }
 
@@ -202,11 +198,9 @@ class ActiveUserService {
     {
         if ($this->isAuthenticated() === false) {
             return null;
-        } else if ($this->getUser() === null) {
-            return null;
         }
 
-        return $this->user->id;
+        return $this->getUser()->id;
     }
 
     /**
@@ -220,15 +214,13 @@ class ActiveUserService {
     {
         if ($this->isAuthenticated() === false) {
             return [];
-        } else if ($this->getUser() === null) {
-            return [];
         }
 
         if ($this->userRoles === null) {
             $this->userRoles = [];
 
             // get roles for logged in user
-            $roleList = $this->roleService->getUserRoles($this->user->id);
+            $roleList = $this->roleService->getUserRoles($this->getUserId());
 
             foreach ($roleList as $r) {
                 $this->userRoles[$r->name] = $r->id;
@@ -247,13 +239,11 @@ class ActiveUserService {
     {
         if ($this->isAuthenticated() === false) {
             return [];
-        } else if ($this->getUser() === null) {
-            return [];
         }
 
         if ($this->userPermissions === null) {
             // get user permissions
-            $permissions = $this->permissionService->getUserPermissions($this->user->id);
+            $permissions = $this->permissionService->getUserPermissions($this->getUserId());
 
             foreach ($permissions as $p) {
                 $this->userPermissions['route_names'][] = $p->route_name;
