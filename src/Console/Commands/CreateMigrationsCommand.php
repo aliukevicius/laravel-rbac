@@ -15,6 +15,9 @@ class CreateMigrationsCommand extends  Command {
 
     protected $composer;
 
+    // used to create migration in right order
+    protected $migrationCounter = 0;
+
     /**
      * Console command name
      *
@@ -94,7 +97,8 @@ class CreateMigrationsCommand extends  Command {
      */
     protected function getPath($name)
     {
-        return $this->migrationDirectoryPath .'/' . date('Y_m_d_His') . '_' . $name . '.php';
+        $this->migrationCounter++;
+        return $this->migrationDirectoryPath .'/' . date('Y_m_d_Hi') . sprintf('%02d', $this->migrationCounter) . '_' . $name . '.php';
     }
 
     /**
